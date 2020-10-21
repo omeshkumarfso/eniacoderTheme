@@ -129,5 +129,8 @@ $wpdb->insert( 'wp_eniacodercontact', array(
 ),
 array( '%s', '%s', '%s', '%s')
 );
+
+echo '<script>alert("Detail Submitted.")</script>';
+
 }
 ?>

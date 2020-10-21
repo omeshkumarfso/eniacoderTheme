@@ -24,46 +24,53 @@
 		            </header>
 	          <?php endif; ?>
 
+              
+ 
+              <!-- <?php echo do_shortcode("[post_grid id='105']"); ?> -->
 
 
-    
-<!-- 
-    <div class="content-area">
-		<main id="skip-content" class="site-main" role="main">
 
-        <div class="row">
-					<div class="content_area col-lg-8 col-md-8">
-						<section id="post_section">
-							<?php
-							if ( have_posts() ) :
-								/* Start the Loop */
-								while ( have_posts() ) : the_post();
 
-									get_template_part( 'template-parts/post/content' );
-								endwhile;
-								else :
 
-									get_template_part( 'template-parts/post/content', 'none' );
-								endif;
-							?>
-							<div class="navigation">
-				                <?php
-				                    // Previous/next page navigation.
-				                    the_posts_pagination( array(
-				                        'prev_text'          => __( 'Previous page', 'eniacoder' ),
-				                        'next_text'          => __( 'Next page', 'eniacoder' ),
-				                        'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'eniacoder' ) . ' </span>',
-				                    ) );
-				                ?>
-				                <div class="clearfix"></div>
-				            </div>
-						</section>
-					</div>
-					<div id="sidebar" class="col-lg-4 col-md-4"><?php dynamic_sidebar('sidebar-1'); ?>
-					</div>
-				</div>
-		</main>
-	</div> -->
+
+
+
+
+
+
+
+
+
+<!-- <?php
+
+
+
+     $i= 1;
+      while($i<5):
+         $i++;
+?>
+
+              <div class="card" style="width: auto;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                         Some quick example text to build on the card title and make up the bulk of the card's content.
+                         Some quick example text to build on the card title and make up the bulk of the card's content.
+    </p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<br>
+
+<?php 
+endwhile;
+?> -->
+
+
+
+
+
 
 <?php 
 // Define our WP Query Parameters
@@ -73,22 +80,39 @@
 <?php 
 // Start our WP Query
         while ($the_query -> have_posts()) : 
-             
+            $the_query -> the_post();
 // Display the Post Title with Hyperlink
 ?>
-     contextarea
-  
-       <li>
+     <div class="card" style="width: auto;">
+     <div class="card-body">
+
+     
+         <h5 class="card-title">
            <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-       </li>
+         </h5>
+     
   
- 
-       <li>
+      
+     <p class="card-text">
            <?php 
 // Display the Post Excerpt
-                the_excerpt(__('(more…)')); 
+              
+              
+              // the_excerpt(__('(more…)')); 
           ?>
-      </li>
+      </p>
+
+      <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+      <?php 
+
+               the_content('Read on...');
+      // global $post;
+     
+               echo '<a class="moretag" href=" . get_permalink($post->ID) .  ">Read more </a>';
+                ?>
+     </div>
+      </div>
+      <br>
 <?php 
 // Repeat the process and reset once it hits the limit
 endwhile;
